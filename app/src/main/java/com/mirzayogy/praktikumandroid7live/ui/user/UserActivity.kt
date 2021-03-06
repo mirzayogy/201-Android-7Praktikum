@@ -36,8 +36,8 @@ class UserActivity : AppCompatActivity() {
             binding.progressBarUser.visibility = View.INVISIBLE
             list.addAll(it.data)
             binding.rvUsers.layoutManager = LinearLayoutManager(this)
-            val listHeroAdapter = ListUserAdapter(list)
-            binding.rvUsers.adapter = listHeroAdapter
+            val listUserAdapter = ListUserAdapter(list)
+            binding.rvUsers.adapter = listUserAdapter
         })
     }
 }
