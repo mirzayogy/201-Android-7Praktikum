@@ -1,12 +1,17 @@
 package com.mirzayogy.praktikumandroid7live.network
 
 import com.mirzayogy.praktikumandroid7live.model.Jenisbarang
+import com.mirzayogy.praktikumandroid7live.model.JenisbarangData
+import com.mirzayogy.praktikumandroid7live.model.JenisbarangResponse
 import com.mirzayogy.praktikumandroid7live.model.User
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 
 //private const val BASE_URL = "https://reqres.in/api/"
 private const val BASE_URL = "http://10.0.2.2/praktikum-penjualan-api-starter/api/"
@@ -25,8 +30,11 @@ interface ApiService {
     @GET("users?page=1")
     suspend fun getUsers(): User
 
-    @GET("jenisbarang/read.php")
+    @GET("jenisbarang/read-free.php")
     suspend fun getJenisbarang(): Jenisbarang
+
+    @POST("jenisbarang/create.php")
+    suspend fun create(@Body jenisbarangData: JenisbarangData): Response<JenisbarangResponse>
 }
 
 object Api {
